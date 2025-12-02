@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse our complete range of lithium batteries - 12V, 24V, 48V LiFePO4 batteries for RVs, solar systems, e-mobility, and more.">
+    <meta name="keywords" content="lithium battery products, 12V battery, 24V battery, 48V battery, LiFePO4 battery, deep cycle battery">
+    <meta name="author" content="Powered Lithium">
+    
+    <title>Products - Powered Lithium | Lithium Battery Catalog</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- FlatIcon CSS (via CDN) -->
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="css/theme.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="logo.png" alt="Powered Lithium Logo" height="40" class="d-inline-block align-top me-2">
+                <span class="brand-text">POWERED LITHIUM</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="products.html">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" type="button">
+                            <i class="bi bi-moon-fill" id="themeIcon"></i>
+                            <span id="themeText">Dark</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header bg-dark py-5 mt-5">
+        <div class="container">
+            <h1 class="text-white display-4 mb-3">Our Products</h1>
+            <p class="text-white-50 lead">High-quality lithium batteries for every application</p>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="py-4 bg-black">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-text bg-dark text-white border-secondary">
+                            <i class="bi bi-search"></i>
+                        </span>
+                        <input type="text" class="form-control bg-dark text-white border-secondary" 
+                               id="searchInput" placeholder="Search products by name, model, voltage, capacity, or specifications...">
+                        <button class="btn btn-success" type="button" id="clearSearch">
+                            <i class="bi bi-x-circle"></i> Clear
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="py-5 bg-dark">
+        <div class="container">
+            <div class="row g-4" id="products-grid">
+                <!-- Products will be loaded dynamically -->
+            </div>
+            <!-- Pagination -->
+            <div class="row mt-4">
+                <div class="col-12">
+                    <nav aria-label="Product pagination">
+                        <ul class="pagination justify-content-center mb-0" id="pagination">
+                            <!-- Pagination buttons will be loaded dynamically -->
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-5 bg-black">
+        <div class="container text-center">
+            <h2 class="text-white mb-4">Ready to Power Your Future?</h2>
+            <p class="text-white-50 mb-4">Contact us via WhatsApp, Email, or Phone to get pricing and place your order</p>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <a href="#" class="btn btn-success btn-lg" id="whatsapp-btn">
+                    <i class="bi bi-whatsapp me-2"></i>WhatsApp
+                </a>
+                <a href="contact.html" class="btn btn-outline-success btn-lg">
+                    <i class="bi bi-envelope me-2"></i>Email Us
+                </a>
+                <a href="#" class="btn btn-outline-success btn-lg" id="phone-btn">
+                    <i class="bi bi-telephone me-2"></i>Call Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="mb-3">POWERED LITHIUM</h5>
+                    <p id="company-description">Reliable Lithium Battery Solutions for Every Need</p>
+                    <div class="social-links mt-3">
+                        <a href="#" class="text-white me-3" id="instagram-link" target="_blank" rel="noopener noreferrer">
+                            <i class="bi bi-instagram fs-4"></i>
+                        </a>
+                        <a href="#" class="text-white me-3" id="facebook-link" target="_blank" rel="noopener noreferrer">
+                            <i class="bi bi-facebook fs-4"></i>
+                        </a>
+                        <a href="#" class="text-white me-3" id="twitter-link" target="_blank" rel="noopener noreferrer">
+                            <i class="bi bi-twitter-x fs-4"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-white-50">Home</a></li>
+                        <li><a href="products.html" class="text-white-50">Products</a></li>
+                        <li><a href="about.html" class="text-white-50">About Us</a></li>
+                        <li><a href="contact.html" class="text-white-50">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5 class="mb-3">Contact Us</h5>
+                    <p class="text-white-50 mb-2" id="footer-email"></p>
+                    <p class="text-white-50 mb-2" id="footer-phone"></p>
+                    <p class="text-white-50" id="footer-address"></p>
+                </div>
+            </div>
+            <hr class="bg-white my-4">
+            <div class="text-center">
+                <p class="mb-0">&copy; <span id="current-year"></span> Powered Lithium. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/theme.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/products.js"></script>
+</body>
+</html>
+

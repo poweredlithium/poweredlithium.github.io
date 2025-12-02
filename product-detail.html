@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Product Details - Powered Lithium">
+    <meta name="keywords" content="lithium battery, product details, battery specifications">
+    <meta name="author" content="Powered Lithium">
+    
+    <title>Product Details - Powered Lithium</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- FlatIcon CSS (via CDN) -->
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="css/theme.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="logo.png" alt="Powered Lithium Logo" height="40" class="d-inline-block align-top me-2">
+                <span class="brand-text">POWERED LITHIUM</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" type="button">
+                            <i class="bi bi-moon-fill" id="themeIcon"></i>
+                            <span id="themeText">Dark</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header bg-dark py-5 mt-5">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html" class="text-white-50">Home</a></li>
+                    <li class="breadcrumb-item"><a href="products.html" class="text-white-50">Products</a></li>
+                    <li class="breadcrumb-item active text-white" aria-current="page" id="breadcrumb-product">Product Details</li>
+                </ol>
+            </nav>
+            <h1 class="text-white display-4 mb-3" id="product-title">Product Details</h1>
+        </div>
+    </section>
+
+    <!-- Product Detail Section -->
+    <section class="py-5 bg-black">
+        <div class="container">
+            <div id="product-loading" class="text-center py-5">
+                <div class="spinner-border text-success" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <p class="text-white-50 mt-3">Loading product details...</p>
+            </div>
+            
+            <div id="product-content" style="display: none;">
+                <div class="row g-5">
+                    <!-- Product Image and Basic Info -->
+                    <div class="col-lg-5">
+                        <div class="product-image-container mb-4">
+                            <img id="product-image" src="" alt="Product" class="img-fluid rounded border border-success">
+                        </div>
+                        <div class="product-basic-info bg-dark p-4 rounded">
+                            <h3 class="text-success mb-3" id="product-name"></h3>
+                            <p class="text-white-50 mb-2"><strong>Model:</strong> <span id="product-model"></span></p>
+                            <p class="text-white-50 mb-2"><strong>Price:</strong> <span id="product-price" class="text-success fw-bold"></span></p>
+                            <div class="mt-4">
+                                <h5 class="text-white mb-3">Quick Contact</h5>
+                                <div class="d-grid gap-2">
+                                    <a href="#" id="whatsapp-link" class="btn btn-success">
+                                        <i class="bi bi-whatsapp me-2"></i>Contact via WhatsApp
+                                    </a>
+                                    <a href="#" id="email-link" class="btn btn-outline-success">
+                                        <i class="bi bi-envelope me-2"></i>Contact via Email
+                                    </a>
+                                    <a href="#" id="phone-link" class="btn btn-outline-success">
+                                        <i class="bi bi-telephone me-2"></i>Call Us
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Details -->
+                    <div class="col-lg-7">
+                        <div class="product-details">
+                            <h4 class="text-white mb-4">Product Description</h4>
+                            <p class="text-white-50 mb-4" id="product-description"></p>
+
+                            <h4 class="text-white mb-3 mt-5">Specifications</h4>
+                            <div class="table-responsive">
+                                <table class="table table-dark table-striped">
+                                    <tbody id="specifications-table">
+                                        <!-- Specifications will be loaded here -->
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <h4 class="text-white mb-3 mt-5">Key Features</h4>
+                            <ul class="list-unstyled" id="features-list">
+                                <!-- Features will be loaded here -->
+                            </ul>
+
+                            <h4 class="text-white mb-3 mt-5">Applications</h4>
+                            <div id="applications-badges" class="mb-4">
+                                <!-- Applications will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Customization Section -->
+                <div class="row mt-5" id="customize">
+                    <div class="col-12">
+                        <div class="bg-dark p-4 rounded">
+                            <h4 class="text-white mb-4">
+                                <i class="bi bi-gear-fill text-success me-2"></i>Product Customization Options
+                            </h4>
+                            <p class="text-white-50 mb-4">
+                                Need a customized version of this battery (different capacity, voltage, or special features)?
+                                Contact us directly and our team will help you design the right solution for your application.
+                            </p>
+                            <div class="d-flex flex-wrap gap-3">
+                                <a href="contact.html" class="btn btn-success btn-lg">
+                                    <i class="bi bi-whatsapp me-2"></i>Contact Us for Customization
+                                </a>
+                                <a href="contact.html" class="btn btn-outline-success btn-lg">
+                                    <i class="bi bi-envelope me-2"></i>Email Custom Requirements
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="product-error" style="display: none;" class="text-center py-5">
+                <p class="text-danger">Product not found. Please return to <a href="products.html" class="text-success">Products Page</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="mb-3">POWERED LITHIUM</h5>
+                    <p id="company-description">Reliable Lithium Battery Solutions for Every Need</p>
+                    <div class="social-links mt-3">
+                        <a href="#" class="text-white me-3" id="instagram-link-footer" target="_blank" rel="noopener noreferrer">
+                            <i class="bi bi-instagram fs-4"></i>
+                        </a>
+                        <a href="#" class="text-white me-3" id="facebook-link-footer" target="_blank" rel="noopener noreferrer">
+                            <i class="bi bi-facebook fs-4"></i>
+                        </a>
+                        <a href="#" class="text-white me-3" id="twitter-link-footer" target="_blank" rel="noopener noreferrer">
+                            <i class="bi bi-twitter-x fs-4"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-white-50">Home</a></li>
+                        <li><a href="products.html" class="text-white-50">Products</a></li>
+                        <li><a href="about.html" class="text-white-50">About Us</a></li>
+                        <li><a href="contact.html" class="text-white-50">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5 class="mb-3">Contact Us</h5>
+                    <p class="text-white-50 mb-2" id="footer-email"></p>
+                    <p class="text-white-50 mb-2" id="footer-phone"></p>
+                    <p class="text-white-50" id="footer-address"></p>
+                </div>
+            </div>
+            <hr class="bg-white my-4">
+            <div class="text-center">
+                <p class="mb-0">&copy; <span id="current-year"></span> Powered Lithium. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/theme.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/product-detail.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,187 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "12V 100Ah LiFePO4 Deep Cycle",
+      "model": "PL-12V-100Ah",
+      "voltage": "12V",
+      "capacity": "100Ah",
+      "type": "LiFePO4",
+      "cycleLife": "5000+ cycles",
+      "description": "High-performance deep cycle lithium battery perfect for RVs, boats, solar systems, and off-grid applications.",
+      "features": [
+        "5000+ deep cycles",
+        "Built-in BMS protection",
+        "Lightweight design",
+        "Fast charging capability",
+        "Wide temperature range"
+      ],
+      "specifications": {
+        "weight": "12.8 kg",
+        "dimensions": "330 x 172 x 220 mm",
+        "maxChargeCurrent": "50A",
+        "maxDischargeCurrent": "100A",
+        "operatingTemp": "-20°C to 60°C",
+        "warranty": "5 years"
+      },
+      "applications": ["RV", "Marine", "Solar", "Off-Grid"],
+      "image": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSpfrRY39IMtYiqQH7Zm2J70vj6FPNQzpkExeijYxOq6FGiVT5WHpOb6XiOXiuxe2-2jU6VrFcK3-eZRC9pWrU2e_oiji--3t1UdE5mOXsXkx5-zlBCk7aUt9D7",
+      "price": "₹18,500",
+      "category": "Deep Cycle"
+    },
+    {
+      "id": 2,
+      "name": "12V 200Ah LiFePO4 Deep Cycle",
+      "model": "PL-12V-200Ah",
+      "voltage": "12V",
+      "capacity": "200Ah",
+      "type": "LiFePO4",
+      "cycleLife": "5000+ cycles",
+      "description": "Double capacity deep cycle battery ideal for larger solar installations and extended off-grid power needs.",
+      "features": [
+        "5000+ deep cycles",
+        "Built-in BMS protection",
+        "High capacity",
+        "Fast charging",
+        "Long lifespan"
+      ],
+      "specifications": {
+        "weight": "24.5 kg",
+        "dimensions": "522 x 238 x 220 mm",
+        "maxChargeCurrent": "100A",
+        "maxDischargeCurrent": "200A",
+        "operatingTemp": "-20°C to 60°C",
+        "warranty": "5 years"
+      },
+      "applications": ["Solar", "RV", "Marine", "Off-Grid"],
+      "image": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSpfrRY39IMtYiqQH7Zm2J70vj6FPNQzpkExeijYxOq6FGiVT5WHpOb6XiOXiuxe2-2jU6VrFcK3-eZRC9pWrU2e_oiji--3t1UdE5mOXsXkx5-zlBCk7aUt9D7",
+      "price": "₹32,000",
+      "category": "Deep Cycle"
+    },
+    {
+      "id": 3,
+      "name": "12V 500Ah LiFePO4 Deep Cycle",
+      "model": "PL-12V-500Ah",
+      "voltage": "12V",
+      "capacity": "500Ah",
+      "type": "LiFePO4",
+      "cycleLife": "5000+ cycles",
+      "description": "High-capacity battery system for large-scale solar and off-grid applications requiring substantial power storage.",
+      "features": [
+        "5000+ deep cycles",
+        "Built-in BMS protection",
+        "Massive capacity",
+        "Modular design",
+        "Professional grade"
+      ],
+      "specifications": {
+        "weight": "58 kg",
+        "dimensions": "522 x 238 x 220 mm",
+        "maxChargeCurrent": "250A",
+        "maxDischargeCurrent": "500A",
+        "operatingTemp": "-20°C to 60°C",
+        "warranty": "5 years"
+      },
+      "applications": ["Solar", "Off-Grid", "Commercial"],
+      "image": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSpfrRY39IMtYiqQH7Zm2J70vj6FPNQzpkExeijYxOq6FGiVT5WHpOb6XiOXiuxe2-2jU6VrFcK3-eZRC9pWrU2e_oiji--3t1UdE5mOXsXkx5-zlBCk7aUt9D7",
+      "price": "Contact for pricing",
+      "category": "Deep Cycle",
+      "isCustomizable": true
+    },
+    {
+      "id": 4,
+      "name": "24V 100Ah LiFePO4 Battery",
+      "model": "PL-24V-100Ah",
+      "voltage": "24V",
+      "capacity": "100Ah",
+      "type": "LiFePO4",
+      "cycleLife": "5000+ cycles",
+      "description": "24V lithium battery perfect for electric scooters, e-bikes, and 24V solar systems.",
+      "features": [
+        "5000+ deep cycles",
+        "Built-in BMS protection",
+        "Compact design",
+        "High discharge rate",
+        "Lightweight"
+      ],
+      "specifications": {
+        "weight": "13.2 kg",
+        "dimensions": "330 x 172 x 220 mm",
+        "maxChargeCurrent": "50A",
+        "maxDischargeCurrent": "100A",
+        "operatingTemp": "-20°C to 60°C",
+        "warranty": "5 years"
+      },
+      "applications": ["E-Scooters", "E-Bikes", "Solar", "PV Monitoring"],
+      "image": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSpfrRY39IMtYiqQH7Zm2J70vj6FPNQzpkExeijYxOq6FGiVT5WHpOb6XiOXiuxe2-2jU6VrFcK3-eZRC9pWrU2e_oiji--3t1UdE5mOXsXkx5-zlBCk7aUt9D7",
+      "price": "₹19,500",
+      "category": "E-Mobility"
+    },
+    {
+      "id": 5,
+      "name": "48V 100Ah LiFePO4 Battery",
+      "model": "PL-48V-100Ah",
+      "voltage": "48V",
+      "capacity": "100Ah",
+      "type": "LiFePO4",
+      "cycleLife": "5000+ cycles",
+      "description": "48V high-capacity battery ideal for larger e-vehicles, golf carts, and 48V solar systems.",
+      "features": [
+        "5000+ deep cycles",
+        "Built-in BMS protection",
+        "High voltage output",
+        "Robust construction",
+        "Long-lasting"
+      ],
+      "specifications": {
+        "weight": "14.5 kg",
+        "dimensions": "330 x 172 x 220 mm",
+        "maxChargeCurrent": "50A",
+        "maxDischargeCurrent": "100A",
+        "operatingTemp": "-20°C to 60°C",
+        "warranty": "5 years"
+      },
+      "applications": ["E-Vehicles", "Golf Carts", "Solar", "Battery Storage"],
+      "image": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSpfrRY39IMtYiqQH7Zm2J70vj6FPNQzpkExeijYxOq6FGiVT5WHpOb6XiOXiuxe2-2jU6VrFcK3-eZRC9pWrU2e_oiji--3t1UdE5mOXsXkx5-zlBCk7aUt9D7",
+      "price": "₹22,000",
+      "category": "E-Mobility"
+    },
+    {
+      "id": 6,
+      "name": "12V 50Ah LiFePO4 Compact",
+      "model": "PL-12V-50Ah",
+      "voltage": "12V",
+      "capacity": "50Ah",
+      "type": "LiFePO4",
+      "cycleLife": "5000+ cycles",
+      "description": "Compact and lightweight lithium battery perfect for small RVs, camping, and portable power applications.",
+      "features": [
+        "5000+ deep cycles",
+        "Built-in BMS protection",
+        "Ultra-compact",
+        "Lightweight",
+        "Portable"
+      ],
+      "specifications": {
+        "weight": "6.5 kg",
+        "dimensions": "197 x 165 x 170 mm",
+        "maxChargeCurrent": "25A",
+        "maxDischargeCurrent": "50A",
+        "operatingTemp": "-20°C to 60°C",
+        "warranty": "5 years"
+      },
+      "applications": ["Camping", "RV", "Portable Power", "Small Solar"],
+      "image": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSpfrRY39IMtYiqQH7Zm2J70vj6FPNQzpkExeijYxOq6FGiVT5WHpOb6XiOXiuxe2-2jU6VrFcK3-eZRC9pWrU2e_oiji--3t1UdE5mOXsXkx5-zlBCk7aUt9D7",
+      "price": "₹12,500",
+      "category": "Compact"
+    }
+  ],
+  "categories": [
+    "All",
+    "Deep Cycle",
+    "E-Mobility",
+    "Compact",
+    "Battery Storage"
+  ]
+}
+

@@ -1,0 +1,42 @@
+{
+  "company": {
+    "name": "Powered Lithium",
+    "tagline": "Reliable Lithium Battery Solutions for Every Need",
+    "description": "Powered Lithium is a leading provider of high-quality lithium battery solutions. We specialize in LiFePO4 batteries for RVs, solar systems, e-mobility, and off-grid applications.",
+    "email": "info@poweredlithium.com",
+    "phone": "+1 (555) 123-4567",
+    "whatsapp": "+15551234567",
+    "address": {
+      "street": "123 Battery Street",
+      "city": "Power City",
+      "state": "PC 12345",
+      "country": "United States"
+    },
+    "logo": "logo.png",
+    "bannerLogo": "banner-logo.png"
+  },
+  "socialMedia": {
+    "instagram": "https://instagram.com/poweredlithium",
+    "facebook": "https://facebook.com/poweredlithium",
+    "twitter": "https://twitter.com/poweredlithium",
+    "linkedin": "https://linkedin.com/company/poweredlithium"
+  },
+  "seo": {
+    "keywords": "lithium battery, LiFePO4 battery, deep cycle battery, solar battery, RV battery, marine battery, e-scooter battery, off-grid battery, powered lithium",
+    "author": "Powered Lithium",
+    "defaultImage": "logo.png"
+  },
+  "contact": {
+    "businessHours": {
+      "weekdays": "9:00 AM - 6:00 PM",
+      "weekend": "10:00 AM - 4:00 PM",
+      "timezone": "EST"
+    },
+    "contactMethods": [
+      "WhatsApp",
+      "Email",
+      "Phone Call"
+    ]
+  }
+}
+

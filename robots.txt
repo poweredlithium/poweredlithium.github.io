@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.poweredlithium.com/sitemap.xml
+
+# Disallow admin/api areas (when implemented)
+Disallow: /api/
+Disallow: /admin/
+

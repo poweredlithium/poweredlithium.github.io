@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Environment variables
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Build files (if using build tools in future)
+dist/
+build/
+
+# Temporary files
+*.tmp
+*.temp
+
+# API keys and secrets (if any)
+secrets/
+*.key
+
+# Database (if local)
+*.db
+*.sqlite
+
