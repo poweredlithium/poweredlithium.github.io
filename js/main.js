@@ -110,8 +110,8 @@ function setupPhoneButtons() {
         btn.addEventListener('click', (e) => {
             setTimeout(() => {
                 if (siteConfig && siteConfig.company && siteConfig.company.phone) {
-                    const phoneNumber = siteConfig.company.phone.replace(/[^0-9+]/g, '');
-                    window.location.href = `tel:${phoneNumber}`;
+                    const phoneNumber = siteConfig.company.phone.replace(/[^0-9]/g, '');
+                    window.location.href = `tel:+91${phoneNumber}`;
                 } else {
                     e.preventDefault();
                     alert('Phone number not configured.');

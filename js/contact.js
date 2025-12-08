@@ -29,8 +29,8 @@ function setupContactMethodButtons() {
         const phoneBtn = document.getElementById('phone-contact-btn');
         if (phoneBtn) {
             if (typeof siteConfig !== 'undefined' && siteConfig && siteConfig.company && siteConfig.company.phone) {
-                const phoneNumber = siteConfig.company.phone.replace(/[^0-9+]/g, '');
-                phoneBtn.href = `tel:${phoneNumber}`;
+                const phoneNumber = siteConfig.company.phone.replace(/[^0-9]/g, '');
+                phoneBtn.href = `tel:+91${phoneNumber}`;
             } else {
                 console.warn('Phone number not configured');
             }

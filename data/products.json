@@ -2,19 +2,110 @@
   "products": [
     {
       "id": 1,
-      "name": "12V 100Ah LiFePO4 Deep Cycle",
-      "model": "PL-12V-100Ah",
+      "name": "6Ah LiFePO4 Battery for Bike Self Start",
+      "model": "PL-6Ah-Bike",
       "voltage": "12V",
-      "capacity": "100Ah",
+      "capacity": "6Ah",
       "type": "LiFePO4",
       "cycleLife": "5000+ cycles",
-      "description": "High-performance deep cycle lithium battery perfect for RVs, boats, solar systems, and off-grid applications.",
+      "description": "High-performance LiFePO4 battery designed for bike self-start applications. Perfect for bikes up to 200cc. Lightweight, reliable, and long-lasting.",
       "features": [
         "5000+ deep cycles",
         "Built-in BMS protection",
         "Lightweight design",
         "Fast charging capability",
-        "Wide temperature range"
+        "Wide temperature range",
+        "Suitable for bikes up to 200cc"
+      ],
+      "specifications": {
+        "weight": "1.2 kg",
+        "dimensions": "150 x 87 x 95 mm",
+        "maxChargeCurrent": "6A",
+        "maxDischargeCurrent": "60A",
+        "operatingTemp": "-20°C to 60°C",
+        "warranty": "2 years"
+      },
+      "applications": ["Bike Self Start", "Motorcycle", "Up to 200cc"],
+      "image": "",
+      "price": "Contact for pricing",
+      "category": "Bike Self Start"
+    },
+    {
+      "id": 2,
+      "name": "12Ah LiFePO4 Battery for Bike Self Start",
+      "model": "PL-12Ah-Bike",
+      "voltage": "12V",
+      "capacity": "12Ah",
+      "type": "LiFePO4",
+      "cycleLife": "5000+ cycles",
+      "description": "Powerful LiFePO4 battery for bike self-start applications. Ideal for bikes up to 350cc. Provides reliable starting power and extended lifespan.",
+      "features": [
+        "5000+ deep cycles",
+        "Built-in BMS protection",
+        "High capacity",
+        "Fast charging",
+        "Long lifespan",
+        "Suitable for bikes up to 350cc"
+      ],
+      "specifications": {
+        "weight": "2.4 kg",
+        "dimensions": "150 x 87 x 125 mm",
+        "maxChargeCurrent": "12A",
+        "maxDischargeCurrent": "120A",
+        "operatingTemp": "-20°C to 60°C",
+        "warranty": "2 years"
+      },
+      "applications": ["Bike Self Start", "Motorcycle", "Up to 350cc"],
+      "image": "",
+      "price": "Contact for pricing",
+      "category": "Bike Self Start"
+    },
+    {
+      "id": 3,
+      "name": "12V 90Ah LiFePO4 Battery for Home Inverter",
+      "model": "PL-12V-90Ah-Inverter",
+      "voltage": "12V",
+      "capacity": "90Ah",
+      "type": "LiFePO4",
+      "cycleLife": "5000+ cycles",
+      "description": "Reliable LiFePO4 battery for home inverter and solar backup systems. Perfect for small to medium homes requiring backup power.",
+      "features": [
+        "5000+ deep cycles",
+        "Built-in BMS protection",
+        "High capacity",
+        "Fast charging",
+        "Long lifespan",
+        "Ideal for home inverters"
+      ],
+      "specifications": {
+        "weight": "11.5 kg",
+        "dimensions": "330 x 172 x 220 mm",
+        "maxChargeCurrent": "45A",
+        "maxDischargeCurrent": "90A",
+        "operatingTemp": "-20°C to 60°C",
+        "warranty": "5 years"
+      },
+      "applications": ["Home Inverter", "Solar Backup", "Off-Grid"],
+      "image": "",
+      "price": "Contact for pricing",
+      "category": "Home Inverter & Solar"
+    },
+    {
+      "id": 4,
+      "name": "12V 100Ah LiFePO4 Battery for Home Inverter",
+      "model": "PL-12V-100Ah-Inverter",
+      "voltage": "12V",
+      "capacity": "100Ah",
+      "type": "LiFePO4",
+      "cycleLife": "5000+ cycles",
+      "description": "High-capacity LiFePO4 battery perfect for home inverter and solar backup systems. Provides reliable power for medium-sized homes.",
+      "features": [
+        "5000+ deep cycles",
+        "Built-in BMS protection",
+        "High capacity",
+        "Fast charging capability",
+        "Wide temperature range",
+        "Perfect for home inverters"
       ],
       "specifications": {
         "weight": "12.8 kg",
@@ -24,26 +115,57 @@
         "operatingTemp": "-20°C to 60°C",
         "warranty": "5 years"
       },
-      "applications": ["RV", "Marine", "Solar", "Off-Grid"],
-      "image": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSpfrRY39IMtYiqQH7Zm2J70vj6FPNQzpkExeijYxOq6FGiVT5WHpOb6XiOXiuxe2-2jU6VrFcK3-eZRC9pWrU2e_oiji--3t1UdE5mOXsXkx5-zlBCk7aUt9D7",
-      "price": "₹18,500",
-      "category": "Deep Cycle"
+      "applications": ["Home Inverter", "Solar Backup", "Off-Grid"],
+      "image": "",
+      "price": "Contact for pricing",
+      "category": "Home Inverter & Solar"
     },
     {
-      "id": 2,
-      "name": "12V 200Ah LiFePO4 Deep Cycle",
-      "model": "PL-12V-200Ah",
+      "id": 5,
+      "name": "12V 150Ah LiFePO4 Battery for Home Inverter",
+      "model": "PL-12V-150Ah-Inverter",
       "voltage": "12V",
-      "capacity": "200Ah",
+      "capacity": "150Ah",
       "type": "LiFePO4",
       "cycleLife": "5000+ cycles",
-      "description": "Double capacity deep cycle battery ideal for larger solar installations and extended off-grid power needs.",
+      "description": "Large capacity LiFePO4 battery for home inverter and solar backup systems. Ideal for larger homes requiring extended backup power.",
       "features": [
         "5000+ deep cycles",
         "Built-in BMS protection",
         "High capacity",
         "Fast charging",
-        "Long lifespan"
+        "Long lifespan",
+        "Perfect for larger homes"
+      ],
+      "specifications": {
+        "weight": "19.2 kg",
+        "dimensions": "522 x 238 x 220 mm",
+        "maxChargeCurrent": "75A",
+        "maxDischargeCurrent": "150A",
+        "operatingTemp": "-20°C to 60°C",
+        "warranty": "5 years"
+      },
+      "applications": ["Home Inverter", "Solar Backup", "Off-Grid"],
+      "image": "",
+      "price": "Contact for pricing",
+      "category": "Home Inverter & Solar"
+    },
+    {
+      "id": 6,
+      "name": "12V 200Ah LiFePO4 Battery for Home Inverter",
+      "model": "PL-12V-200Ah-Inverter",
+      "voltage": "12V",
+      "capacity": "200Ah",
+      "type": "LiFePO4",
+      "cycleLife": "5000+ cycles",
+      "description": "Extra large capacity LiFePO4 battery for home inverter and solar backup systems. Perfect for large homes and commercial applications.",
+      "features": [
+        "5000+ deep cycles",
+        "Built-in BMS protection",
+        "Very high capacity",
+        "Fast charging",
+        "Long lifespan",
+        "Commercial grade"
       ],
       "specifications": {
         "weight": "24.5 kg",
@@ -53,135 +175,316 @@
         "operatingTemp": "-20°C to 60°C",
         "warranty": "5 years"
       },
-      "applications": ["Solar", "RV", "Marine", "Off-Grid"],
-      "image": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSpfrRY39IMtYiqQH7Zm2J70vj6FPNQzpkExeijYxOq6FGiVT5WHpOb6XiOXiuxe2-2jU6VrFcK3-eZRC9pWrU2e_oiji--3t1UdE5mOXsXkx5-zlBCk7aUt9D7",
-      "price": "₹32,000",
-      "category": "Deep Cycle"
+      "applications": ["Home Inverter", "Solar Backup", "Off-Grid", "Commercial"],
+      "image": "",
+      "price": "Contact for pricing",
+      "category": "Home Inverter & Solar"
     },
     {
-      "id": 3,
-      "name": "12V 500Ah LiFePO4 Deep Cycle",
-      "model": "PL-12V-500Ah",
-      "voltage": "12V",
-      "capacity": "500Ah",
+      "id": 7,
+      "name": "24V 90Ah LiFePO4 Battery for Home Inverter",
+      "model": "PL-24V-90Ah-Inverter",
+      "voltage": "24V",
+      "capacity": "90Ah",
       "type": "LiFePO4",
       "cycleLife": "5000+ cycles",
-      "description": "High-capacity battery system for large-scale solar and off-grid applications requiring substantial power storage.",
+      "description": "24V LiFePO4 battery for home inverter and solar backup systems. Perfect for 24V inverter systems requiring reliable backup power.",
       "features": [
         "5000+ deep cycles",
         "Built-in BMS protection",
-        "Massive capacity",
-        "Modular design",
-        "Professional grade"
+        "24V system",
+        "High capacity",
+        "Fast charging",
+        "Ideal for 24V inverters"
       ],
       "specifications": {
-        "weight": "58 kg",
-        "dimensions": "522 x 238 x 220 mm",
-        "maxChargeCurrent": "250A",
-        "maxDischargeCurrent": "500A",
+        "weight": "11.5 kg",
+        "dimensions": "330 x 172 x 220 mm",
+        "maxChargeCurrent": "45A",
+        "maxDischargeCurrent": "90A",
         "operatingTemp": "-20°C to 60°C",
         "warranty": "5 years"
       },
-      "applications": ["Solar", "Off-Grid", "Commercial"],
-      "image": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSpfrRY39IMtYiqQH7Zm2J70vj6FPNQzpkExeijYxOq6FGiVT5WHpOb6XiOXiuxe2-2jU6VrFcK3-eZRC9pWrU2e_oiji--3t1UdE5mOXsXkx5-zlBCk7aUt9D7",
+      "applications": ["Home Inverter", "Solar Backup", "24V Systems"],
+      "image": "",
       "price": "Contact for pricing",
-      "category": "Deep Cycle",
-      "isCustomizable": true
+      "category": "Home Inverter & Solar"
     },
     {
-      "id": 4,
-      "name": "24V 100Ah LiFePO4 Battery",
-      "model": "PL-24V-100Ah",
+      "id": 8,
+      "name": "24V 100Ah LiFePO4 Battery for Home Inverter",
+      "model": "PL-24V-100Ah-Inverter",
       "voltage": "24V",
       "capacity": "100Ah",
       "type": "LiFePO4",
       "cycleLife": "5000+ cycles",
-      "description": "24V lithium battery perfect for electric scooters, e-bikes, and 24V solar systems.",
+      "description": "24V high-capacity LiFePO4 battery for home inverter and solar backup systems. Provides reliable power for 24V inverter systems.",
+      "features": [
+        "5000+ deep cycles",
+        "Built-in BMS protection",
+        "24V system",
+        "High capacity",
+        "Fast charging capability",
+        "Perfect for 24V inverters"
+      ],
+      "specifications": {
+        "weight": "12.8 kg",
+        "dimensions": "330 x 172 x 220 mm",
+        "maxChargeCurrent": "50A",
+        "maxDischargeCurrent": "100A",
+        "operatingTemp": "-20°C to 60°C",
+        "warranty": "5 years"
+      },
+      "applications": ["Home Inverter", "Solar Backup", "24V Systems"],
+      "image": "",
+      "price": "Contact for pricing",
+      "category": "Home Inverter & Solar"
+    },
+    {
+      "id": 9,
+      "name": "24V 150Ah LiFePO4 Battery for Home Inverter",
+      "model": "PL-24V-150Ah-Inverter",
+      "voltage": "24V",
+      "capacity": "150Ah",
+      "type": "LiFePO4",
+      "cycleLife": "5000+ cycles",
+      "description": "24V large capacity LiFePO4 battery for home inverter and solar backup systems. Ideal for larger 24V inverter systems.",
+      "features": [
+        "5000+ deep cycles",
+        "Built-in BMS protection",
+        "24V system",
+        "Large capacity",
+        "Fast charging",
+        "Perfect for larger 24V systems"
+      ],
+      "specifications": {
+        "weight": "19.2 kg",
+        "dimensions": "522 x 238 x 220 mm",
+        "maxChargeCurrent": "75A",
+        "maxDischargeCurrent": "150A",
+        "operatingTemp": "-20°C to 60°C",
+        "warranty": "5 years"
+      },
+      "applications": ["Home Inverter", "Solar Backup", "24V Systems"],
+      "image": "",
+      "price": "Contact for pricing",
+      "category": "Home Inverter & Solar"
+    },
+    {
+      "id": 10,
+      "name": "24V 200Ah LiFePO4 Battery for Home Inverter",
+      "model": "PL-24V-200Ah-Inverter",
+      "voltage": "24V",
+      "capacity": "200Ah",
+      "type": "LiFePO4",
+      "cycleLife": "5000+ cycles",
+      "description": "24V extra large capacity LiFePO4 battery for home inverter and solar backup systems. Perfect for large 24V inverter systems.",
+      "features": [
+        "5000+ deep cycles",
+        "Built-in BMS protection",
+        "24V system",
+        "Very high capacity",
+        "Fast charging",
+        "Commercial grade"
+      ],
+      "specifications": {
+        "weight": "24.5 kg",
+        "dimensions": "522 x 238 x 220 mm",
+        "maxChargeCurrent": "100A",
+        "maxDischargeCurrent": "200A",
+        "operatingTemp": "-20°C to 60°C",
+        "warranty": "5 years"
+      },
+      "applications": ["Home Inverter", "Solar Backup", "24V Systems", "Commercial"],
+      "image": "",
+      "price": "Contact for pricing",
+      "category": "Home Inverter & Solar"
+    },
+    {
+      "id": 11,
+      "name": "12V LiFePO4 E-Bike Battery",
+      "model": "PL-12V-EBike",
+      "voltage": "12V",
+      "capacity": "Varies",
+      "type": "LiFePO4",
+      "cycleLife": "5000+ cycles",
+      "description": "12V LiFePO4 battery pack for e-bikes. Customizable capacity based on your e-bike requirements. Reliable and long-lasting.",
       "features": [
         "5000+ deep cycles",
         "Built-in BMS protection",
         "Compact design",
         "High discharge rate",
-        "Lightweight"
-      ],
-      "specifications": {
-        "weight": "13.2 kg",
-        "dimensions": "330 x 172 x 220 mm",
-        "maxChargeCurrent": "50A",
-        "maxDischargeCurrent": "100A",
-        "operatingTemp": "-20°C to 60°C",
-        "warranty": "5 years"
-      },
-      "applications": ["E-Scooters", "E-Bikes", "Solar", "PV Monitoring"],
-      "image": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSpfrRY39IMtYiqQH7Zm2J70vj6FPNQzpkExeijYxOq6FGiVT5WHpOb6XiOXiuxe2-2jU6VrFcK3-eZRC9pWrU2e_oiji--3t1UdE5mOXsXkx5-zlBCk7aUt9D7",
-      "price": "₹19,500",
-      "category": "E-Mobility"
-    },
-    {
-      "id": 5,
-      "name": "48V 100Ah LiFePO4 Battery",
-      "model": "PL-48V-100Ah",
-      "voltage": "48V",
-      "capacity": "100Ah",
-      "type": "LiFePO4",
-      "cycleLife": "5000+ cycles",
-      "description": "48V high-capacity battery ideal for larger e-vehicles, golf carts, and 48V solar systems.",
-      "features": [
-        "5000+ deep cycles",
-        "Built-in BMS protection",
-        "High voltage output",
-        "Robust construction",
-        "Long-lasting"
-      ],
-      "specifications": {
-        "weight": "14.5 kg",
-        "dimensions": "330 x 172 x 220 mm",
-        "maxChargeCurrent": "50A",
-        "maxDischargeCurrent": "100A",
-        "operatingTemp": "-20°C to 60°C",
-        "warranty": "5 years"
-      },
-      "applications": ["E-Vehicles", "Golf Carts", "Solar", "Battery Storage"],
-      "image": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSpfrRY39IMtYiqQH7Zm2J70vj6FPNQzpkExeijYxOq6FGiVT5WHpOb6XiOXiuxe2-2jU6VrFcK3-eZRC9pWrU2e_oiji--3t1UdE5mOXsXkx5-zlBCk7aUt9D7",
-      "price": "₹22,000",
-      "category": "E-Mobility"
-    },
-    {
-      "id": 6,
-      "name": "12V 50Ah LiFePO4 Compact",
-      "model": "PL-12V-50Ah",
-      "voltage": "12V",
-      "capacity": "50Ah",
-      "type": "LiFePO4",
-      "cycleLife": "5000+ cycles",
-      "description": "Compact and lightweight lithium battery perfect for small RVs, camping, and portable power applications.",
-      "features": [
-        "5000+ deep cycles",
-        "Built-in BMS protection",
-        "Ultra-compact",
         "Lightweight",
-        "Portable"
+        "Customizable capacity"
       ],
       "specifications": {
-        "weight": "6.5 kg",
-        "dimensions": "197 x 165 x 170 mm",
-        "maxChargeCurrent": "25A",
-        "maxDischargeCurrent": "50A",
+        "weight": "Varies by capacity",
+        "dimensions": "Custom",
+        "maxChargeCurrent": "Varies",
+        "maxDischargeCurrent": "Varies",
         "operatingTemp": "-20°C to 60°C",
-        "warranty": "5 years"
+        "warranty": "2 years"
       },
-      "applications": ["Camping", "RV", "Portable Power", "Small Solar"],
-      "image": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSpfrRY39IMtYiqQH7Zm2J70vj6FPNQzpkExeijYxOq6FGiVT5WHpOb6XiOXiuxe2-2jU6VrFcK3-eZRC9pWrU2e_oiji--3t1UdE5mOXsXkx5-zlBCk7aUt9D7",
-      "price": "₹12,500",
-      "category": "Compact"
+      "applications": ["E-Bike", "E-Scooter", "Electric Vehicle"],
+      "image": "",
+      "price": "Contact for pricing",
+      "category": "E-Bike Battery"
+    },
+    {
+      "id": 12,
+      "name": "24V LiFePO4 E-Bike Battery",
+      "model": "PL-24V-EBike",
+      "voltage": "24V",
+      "capacity": "Varies",
+      "type": "LiFePO4",
+      "cycleLife": "5000+ cycles",
+      "description": "24V LiFePO4 battery pack for e-bikes. Customizable capacity based on your e-bike requirements. High performance and reliability.",
+      "features": [
+        "5000+ deep cycles",
+        "Built-in BMS protection",
+        "24V system",
+        "High discharge rate",
+        "Lightweight",
+        "Customizable capacity"
+      ],
+      "specifications": {
+        "weight": "Varies by capacity",
+        "dimensions": "Custom",
+        "maxChargeCurrent": "Varies",
+        "maxDischargeCurrent": "Varies",
+        "operatingTemp": "-20°C to 60°C",
+        "warranty": "2 years"
+      },
+      "applications": ["E-Bike", "E-Scooter", "Electric Vehicle"],
+      "image": "",
+      "price": "Contact for pricing",
+      "category": "E-Bike Battery"
+    },
+    {
+      "id": 13,
+      "name": "36V LiFePO4 E-Bike Battery",
+      "model": "PL-36V-EBike",
+      "voltage": "36V",
+      "capacity": "Varies",
+      "type": "LiFePO4",
+      "cycleLife": "5000+ cycles",
+      "description": "36V LiFePO4 battery pack for e-bikes. Customizable capacity based on your e-bike requirements. Perfect for mid-range e-bikes.",
+      "features": [
+        "5000+ deep cycles",
+        "Built-in BMS protection",
+        "36V system",
+        "High discharge rate",
+        "Lightweight",
+        "Customizable capacity"
+      ],
+      "specifications": {
+        "weight": "Varies by capacity",
+        "dimensions": "Custom",
+        "maxChargeCurrent": "Varies",
+        "maxDischargeCurrent": "Varies",
+        "operatingTemp": "-20°C to 60°C",
+        "warranty": "2 years"
+      },
+      "applications": ["E-Bike", "E-Scooter", "Electric Vehicle"],
+      "image": "",
+      "price": "Contact for pricing",
+      "category": "E-Bike Battery"
+    },
+    {
+      "id": 14,
+      "name": "48V LiFePO4 E-Bike Battery",
+      "model": "PL-48V-EBike",
+      "voltage": "48V",
+      "capacity": "Varies",
+      "type": "LiFePO4",
+      "cycleLife": "5000+ cycles",
+      "description": "48V LiFePO4 battery pack for e-bikes. Customizable capacity based on your e-bike requirements. High performance for powerful e-bikes.",
+      "features": [
+        "5000+ deep cycles",
+        "Built-in BMS protection",
+        "48V system",
+        "High discharge rate",
+        "Lightweight",
+        "Customizable capacity"
+      ],
+      "specifications": {
+        "weight": "Varies by capacity",
+        "dimensions": "Custom",
+        "maxChargeCurrent": "Varies",
+        "maxDischargeCurrent": "Varies",
+        "operatingTemp": "-20°C to 60°C",
+        "warranty": "2 years"
+      },
+      "applications": ["E-Bike", "E-Scooter", "Electric Vehicle"],
+      "image": "",
+      "price": "Contact for pricing",
+      "category": "E-Bike Battery"
+    },
+    {
+      "id": 15,
+      "name": "68V LiFePO4 E-Bike Battery",
+      "model": "PL-68V-EBike",
+      "voltage": "68V",
+      "capacity": "Varies",
+      "type": "LiFePO4",
+      "cycleLife": "5000+ cycles",
+      "description": "68V LiFePO4 battery pack for high-performance e-bikes. Customizable capacity based on your e-bike requirements. Perfect for powerful e-bikes.",
+      "features": [
+        "5000+ deep cycles",
+        "Built-in BMS protection",
+        "68V system",
+        "Very high discharge rate",
+        "Lightweight",
+        "Customizable capacity"
+      ],
+      "specifications": {
+        "weight": "Varies by capacity",
+        "dimensions": "Custom",
+        "maxChargeCurrent": "Varies",
+        "maxDischargeCurrent": "Varies",
+        "operatingTemp": "-20°C to 60°C",
+        "warranty": "2 years"
+      },
+      "applications": ["E-Bike", "E-Scooter", "Electric Vehicle", "High Performance"],
+      "image": "",
+      "price": "Contact for pricing",
+      "category": "E-Bike Battery"
+    },
+    {
+      "id": 16,
+      "name": "72V LiFePO4 E-Bike Battery",
+      "model": "PL-72V-EBike",
+      "voltage": "72V",
+      "capacity": "Varies",
+      "type": "LiFePO4",
+      "cycleLife": "5000+ cycles",
+      "description": "72V LiFePO4 battery pack for high-performance e-bikes. Customizable capacity based on your e-bike requirements. Maximum power for premium e-bikes.",
+      "features": [
+        "5000+ deep cycles",
+        "Built-in BMS protection",
+        "72V system",
+        "Maximum discharge rate",
+        "Lightweight",
+        "Customizable capacity"
+      ],
+      "specifications": {
+        "weight": "Varies by capacity",
+        "dimensions": "Custom",
+        "maxChargeCurrent": "Varies",
+        "maxDischargeCurrent": "Varies",
+        "operatingTemp": "-20°C to 60°C",
+        "warranty": "2 years"
+      },
+      "applications": ["E-Bike", "E-Scooter", "Electric Vehicle", "High Performance"],
+      "image": "",
+      "price": "Contact for pricing",
+      "category": "E-Bike Battery"
     }
   ],
   "categories": [
     "All",
-    "Deep Cycle",
-    "E-Mobility",
-    "Compact",
-    "Battery Storage"
+    "Bike Self Start",
+    "Home Inverter & Solar",
+    "E-Bike Battery"
   ]
 }
-

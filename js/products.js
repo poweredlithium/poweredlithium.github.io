@@ -90,8 +90,13 @@ function displayProducts(products) {
     productsGrid.innerHTML = products.map(product => `
         <div class="col-md-6 col-lg-4" id="product-${product.id}">
             <div class="product-card">
-                <img src="${product.image}" alt="${product.name}" 
-                     onerror="this.src='https://via.placeholder.com/400x300/00ff00/000000?text=${encodeURIComponent(product.name)}'">
+                ${product.image && product.image.trim() !== '' ? `<img src="${product.image}" alt="${product.name}" 
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="product-image-placeholder" style="display: none; height: 250px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); align-items: center; justify-content: center; color: white; font-size: 1.2rem; border-radius: 8px;">
+                    <i class="bi bi-battery-charging fs-1"></i>
+                </div>` : `<div class="product-image-placeholder" style="height: 250px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem; border-radius: 8px;">
+                    <i class="bi bi-battery-charging fs-1"></i>
+                </div>`}
                 <div class="product-card-body">
                     <h5>${product.name}</h5>
                     <p class="model">Model: ${product.model}</p>
@@ -299,8 +304,8 @@ function setupContactButtons() {
             e.preventDefault();
             setTimeout(() => {
                 if (typeof siteConfig !== 'undefined' && siteConfig && siteConfig.company && siteConfig.company.phone) {
-                    const phoneNumber = siteConfig.company.phone.replace(/[^0-9+]/g, '');
-                    window.location.href = `tel:${phoneNumber}`;
+                    const phoneNumber = siteConfig.company.phone.replace(/[^0-9]/g, '');
+                    window.location.href = `tel:+91${phoneNumber}`;
                 } else {
                     alert('Phone number not configured. Please check config/config.json');
                 }

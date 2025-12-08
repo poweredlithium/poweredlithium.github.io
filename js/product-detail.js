@@ -56,11 +56,37 @@ function displayProduct(product) {
     
     // Image
     const productImage = document.getElementById('product-image');
-    productImage.src = product.image;
-    productImage.alt = product.name;
-    productImage.onerror = function() {
-        this.src = `https://via.placeholder.com/600x400/00ff00/000000?text=${encodeURIComponent(product.name)}`;
-    };
+    const productImageContainer = productImage.parentElement;
+    if (product.image && product.image.trim() !== '') {
+        productImage.src = product.image;
+        productImage.alt = product.name;
+        productImage.style.display = 'block';
+        productImage.onerror = function() {
+            this.style.display = 'none';
+            let placeholder = productImageContainer.querySelector('.product-image-placeholder');
+            if (!placeholder) {
+                placeholder = document.createElement('div');
+                placeholder.className = 'product-image-placeholder';
+                placeholder.style.cssText = 'height: 400px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; border-radius: 8px;';
+                placeholder.innerHTML = '<i class="bi bi-battery-charging fs-1"></i>';
+                productImageContainer.appendChild(placeholder);
+            }
+            placeholder.style.display = 'flex';
+        };
+        let placeholder = productImageContainer.querySelector('.product-image-placeholder');
+        if (placeholder) placeholder.style.display = 'none';
+    } else {
+        productImage.style.display = 'none';
+        let placeholder = productImageContainer.querySelector('.product-image-placeholder');
+        if (!placeholder) {
+            placeholder = document.createElement('div');
+            placeholder.className = 'product-image-placeholder';
+            placeholder.style.cssText = 'height: 400px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; border-radius: 8px;';
+            placeholder.innerHTML = '<i class="bi bi-battery-charging fs-1"></i>';
+            productImageContainer.appendChild(placeholder);
+        }
+        placeholder.style.display = 'flex';
+    }
     
     // Specifications
     const specsTable = document.getElementById('specifications-table');
@@ -153,8 +179,8 @@ function setupContactLinks(product) {
         // Phone link
         const phoneLink = document.getElementById('phone-link');
         if (phoneLink && typeof siteConfig !== 'undefined' && siteConfig && siteConfig.company && siteConfig.company.phone) {
-            const phoneNumber = siteConfig.company.phone.replace(/[^0-9+]/g, '');
-            phoneLink.href = `tel:${phoneNumber}`;
+            const phoneNumber = siteConfig.company.phone.replace(/[^0-9]/g, '');
+            phoneLink.href = `tel:+91${phoneNumber}`;
         }
     }, 300);
 }

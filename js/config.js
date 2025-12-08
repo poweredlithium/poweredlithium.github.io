@@ -75,39 +75,51 @@ function applyConfig() {
     const footerAddress = document.getElementById('footer-address');
     if (footerAddress && siteConfig.company.address) {
         const addr = siteConfig.company.address;
-        footerAddress.innerHTML = `<i class="bi bi-geo-alt me-2"></i>${addr.street}, ${addr.city}, ${addr.state}, ${addr.country}`;
+        const addressLine = `${addr.street}, ${addr.city}, ${addr.state}, ${addr.country}${addr.pincode ? ' - ' + addr.pincode : ''}`;
+        footerAddress.innerHTML = `<i class="bi bi-geo-alt me-2"></i>${addressLine}`;
     }
 
     // Update social media links
     const instagramLinks = document.querySelectorAll('#instagram-link, #instagram-link-footer');
     instagramLinks.forEach(link => {
-        if (siteConfig.socialMedia.instagram) {
+        if (siteConfig.socialMedia && siteConfig.socialMedia.instagram) {
             link.href = siteConfig.socialMedia.instagram;
+            link.style.display = 'inline-block';
+        } else {
+            link.style.display = 'none';
         }
     });
 
+    const youtubeLinks = document.querySelectorAll('#youtube-link, #youtube-link-footer');
+    youtubeLinks.forEach(link => {
+        if (siteConfig.socialMedia && siteConfig.socialMedia.youtube) {
+            link.href = siteConfig.socialMedia.youtube;
+            link.style.display = 'inline-block';
+        } else {
+            link.style.display = 'none';
+        }
+    });
+
+    // Hide Facebook and Twitter links
     const facebookLinks = document.querySelectorAll('#facebook-link, #facebook-link-footer');
     facebookLinks.forEach(link => {
-        if (siteConfig.socialMedia.facebook) {
-            link.href = siteConfig.socialMedia.facebook;
-        }
+        link.style.display = 'none';
     });
 
     const twitterLinks = document.querySelectorAll('#twitter-link, #twitter-link-footer');
     twitterLinks.forEach(link => {
-        if (siteConfig.socialMedia.twitter) {
-            link.href = siteConfig.socialMedia.twitter;
-        }
+        link.style.display = 'none';
     });
 
     // Update contact page
     const whatsappContactBtn = document.getElementById('whatsapp-contact-btn');
     if (whatsappContactBtn && siteConfig.company.whatsapp) {
-        const whatsappUrl = `https://wa.me/${siteConfig.company.whatsapp.replace(/[^0-9]/g, '')}`;
+        const whatsappNumber = siteConfig.company.whatsapp.replace(/[^0-9]/g, '');
+        const whatsappUrl = `https://wa.me/${whatsappNumber}`;
         whatsappContactBtn.href = whatsappUrl;
         const whatsappDisplay = document.getElementById('whatsapp-display');
         if (whatsappDisplay) {
-            whatsappDisplay.textContent = siteConfig.company.whatsapp;
+            whatsappDisplay.textContent = siteConfig.company.phone || siteConfig.company.whatsapp;
         }
     }
 
@@ -122,7 +134,8 @@ function applyConfig() {
 
     const phoneContactBtn = document.getElementById('phone-contact-btn');
     if (phoneContactBtn && siteConfig.company.phone) {
-        phoneContactBtn.href = `tel:${siteConfig.company.phone}`;
+        const phoneNumber = siteConfig.company.phone.replace(/[^0-9+]/g, '');
+        phoneContactBtn.href = `tel:+91${phoneNumber}`;
         const phoneDisplay = document.getElementById('phone-display');
         if (phoneDisplay) {
             phoneDisplay.textContent = siteConfig.company.phone;
@@ -144,7 +157,8 @@ function applyConfig() {
     const companyAddress = document.getElementById('company-address');
     if (companyAddress && siteConfig.company.address) {
         const addr = siteConfig.company.address;
-        companyAddress.innerHTML = `<i class="bi bi-geo-alt-fill me-2"></i><strong>${siteConfig.company.name}</strong><br>${addr.street}<br>${addr.city}, ${addr.state}<br>${addr.country}`;
+        const addressLine = `${addr.street}<br>${addr.city}, ${addr.state}<br>${addr.country}${addr.pincode ? ' - ' + addr.pincode : ''}`;
+        companyAddress.innerHTML = `<i class="bi bi-geo-alt-fill me-2"></i><strong>${siteConfig.company.name}</strong><br>${addressLine}`;
     }
 
     // Update about page description
@@ -172,4 +186,5 @@ document.addEventListener('DOMContentLoaded', () => {
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = { siteConfig, loadConfig };
 }
+
 

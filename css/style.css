@@ -240,6 +240,61 @@ body {
     margin-bottom: 1rem;
 }
 
+/* Advantage Cards */
+.advantage-card {
+    padding: 2rem;
+    background: var(--bg-dark);
+    border: 1px solid rgba(0, 255, 0, 0.2);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    height: 100%;
+    text-align: center;
+}
+
+.advantage-card:hover {
+    border-color: var(--primary-green);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 255, 0, 0.25);
+    background: linear-gradient(135deg, rgba(0, 255, 0, 0.05) 0%, var(--bg-dark) 100%);
+}
+
+.advantage-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(0, 255, 0, 0.1) 0%, rgba(0, 255, 0, 0.05) 100%);
+    border-radius: 50%;
+    border: 2px solid rgba(0, 255, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.advantage-card:hover .advantage-icon {
+    background: linear-gradient(135deg, rgba(0, 255, 0, 0.2) 0%, rgba(0, 255, 0, 0.1) 100%);
+    border-color: var(--primary-green);
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 255, 0, 0.3);
+}
+
+.advantage-icon i {
+    font-size: 2.5rem;
+    color: var(--primary-green);
+}
+
+.advantage-card h5 {
+    color: var(--text-white);
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.advantage-card p {
+    color: var(--text-gray);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
 /* Hero Product Panel (Home Right Column) */
 .hero-product-panel {
     background: radial-gradient(circle at top right, rgba(0, 255, 0, 0.25) 0%, rgba(0, 0, 0, 0.8) 45%, rgba(0, 0, 0, 1) 100%);

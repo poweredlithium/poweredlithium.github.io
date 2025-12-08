@@ -107,3 +107,4 @@ The contact page has been redesigned with:
 - Info cards for business hours and social links
 - Better visual organization
 
+
