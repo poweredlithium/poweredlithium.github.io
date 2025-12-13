@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Invoice PDF Generator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- html2pdf (html2canvas + jsPDF) -->
+  <!-- html2canvas + jsPDF (stable single-page PDF) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 20px;
+    }
+
+    /* ---------- FORM ---------- */
+    .form-panel {
+      background: #ffffff;
+      padding: 16px;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .form-panel label {
+      font-size: 13px;
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
+
+    .form-panel input,
+    .form-panel textarea {
+      width: 100%;
+      padding: 6px 8px;
+      margin-top: 4px;
+      font-size: 13px;
+      box-sizing: border-box;
+    }
+
+    .form-panel textarea {
+      resize: vertical;
+    }
+
+    .form-panel button {
+      margin-top: 14px;
+      width: 100%;
+      padding: 10px;
+      background: #1e88e5;
+      color: #fff;
+      border: none;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .form-panel button:hover {
+      background: #1565c0;
+    }
+
+    /* ---------- INVOICE PREVIEW ---------- */
+    .preview-wrapper {
+      background: #ccc;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* A4 size */
+    .invoice {
+      width: 210mm;
+      height: 297mm;
+      background: white;
+      padding: 20mm;
+      box-sizing: border-box;
+      color: #000;
+      overflow: hidden;
+    }
+
+    .invoice-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #1e88e5;
+      padding-bottom: 10px;
+    }
+
+    .company {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .company img {
+      height: 60px;
+      object-fit: contain;
+      margin-top: -20px;
+    }
+
+    .title {
+      background: #1e88e5;
+      color: #fff;
+      padding: 6px 12px;
+      font-weight: bold;
+    }
+
+    .section {
+      margin-top: 16px;
+      display: flex;
+      gap: 20px;
+    }
+
+    .box {
+      flex: 1;
+      border: 1px solid #ccc;
+    }
+
+    .box h4 {
+      margin: 0;
+      padding: 6px 8px;
+      background: #1e88e5;
+      color: #fff;
+      font-size: 13px;
+    }
+
+    .box .content {
+      padding: 8px;
+      font-size: 13px;
+      white-space: pre-line;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+      font-size: 13px;
+    }
+
+    table th, table td {
+      border: 1px solid #ccc;
+      padding: 6px;
+      text-align: left;
+    }
+
+    table th {
+      background: #f0f7ff;
+    }
+
+    .totals {
+      margin-top: 10px;
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .totals table {
+      width: 300px;
+    }
+
+    .terms {
+      margin-top: 20px;
+      font-size: 12px;
+    }
+    #pCompanyAddress {
+    font-size: 12px;
+    line-height: 0px;
+    
+    }
+    #pCompanyName {
+    
+    
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- ================= FORM PANEL ================= -->
+  <div class="form-panel">
+    <h2>Invoice Inputs</h2>
+
+    <label>Company Logo URL</label>
+    <input type="text" id="logoUrl" placeholder="https://example.com/logo.png" value="https://poweredlithium.github.io/logo.png" />
+
+    <label>Company Name</label>
+    <input type="text" id="companyName" value="POWERED LITHIUM" />
+
+    <label>Company Address</label>
+    <textarea id="companyAddress">
+  No 1/2 MC road Vinayagapuram, Agaramcherry, 
+  Gudiyattam, Vellore - 635804
+Email: poweredlithium@gmail.com | Phone: 8838697129
+</textarea>
+
+    <label>Invoice Title</label>
+    <input type="text" id="invoiceTitle" value="SALES INVOICE" />
+
+    <label>Invoice ID</label>
+    <input type="text" id="invoiceId" value="PLI-2025-1001" />
+
+    <label>Invoice Date</label>
+    <input type="date" id="invoiceDate" />
+
+    <label>Billing Address</label>
+    <textarea id="billing">
+Customer Name
+Address
+Phone
+</textarea>
+
+    <label>Product Details (one per line: Description | Qty | Price)</label>
+    <textarea id="products">Lithium-ion Battery Pack 12V 100Ah | 5 | 25000
+Battery Management System (BMS) 48V | 1 | 25000</textarea>
+
+    <label>Shipping / Handling</label>
+    <input type="number" id="shipping" value="1500" />
+
+    <label>Terms & Conditions</label>
+    <textarea id="terms">
+    Payment due within 30 days. No returns.
+    Warranty: 42 months
+</textarea>
+
+    <button onclick="generatePDF()">Generate PDF (A4)</button>
+  </div>
+
+  <!-- ================= PREVIEW ================= -->
+  <div class="preview-wrapper">
+    <div class="invoice" id="invoice">
+
+      <div class="invoice-header">
+        <div class="company">
+          <img id="logo" src="" alt="Logo" />
+          <div>
+            <strong id="pCompanyName">POWERED LITHIUM</strong><br />
+            <span id="pCompanyAddress"></span>
+          </div>
+        </div>
+        <div class="title" id="pInvoiceTitle">SALES INVOICE (Non-GST)</div>
+      </div>
+
+      <div class="section">
+        <div class="box">
+          <h4>Billing & Shipping Information</h4>
+          <div class="content" id="pBilling"></div>
+        </div>
+        <div class="box">
+          <h4>Invoice Details</h4>
+          <div class="content" id="pDetails"></div>
+        </div>
+      </div>
+
+      <table id="productTable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Description</th>
+            <th>Qty</th>
+            <th>Price</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+      <div class="totals">
+        <table>
+          <tr>
+            <td>Sub Total</td>
+            <td class="amount" id="subTotal">₹0</td>
+          </tr>
+          <tr>
+            <td>Shipping</td>
+            <td class="amount" id="pShipping">₹0</td>
+          </tr>
+          <tr>
+            <th>Grand Total</th>
+            <th class="amount" id="grandTotal">₹0</th>
+          </tr>
+        </table>
+      </div>
+
+      <div class="terms">
+        <strong>Terms & Conditions</strong><br />
+        <div id="pTerms"></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+function generatePDF() {
+
+  /* --------- Populate Preview --------- */
+  document.getElementById('logo').src =
+    document.getElementById('logoUrl').value;
+
+  document.getElementById('pCompanyName').innerText =
+    document.getElementById('companyName').value;
+
+  document.getElementById('pCompanyAddress').innerText =
+    document.getElementById('companyAddress').value;
+
+  document.getElementById('pInvoiceTitle').innerText =
+    document.getElementById('invoiceTitle').value;
+
+  document.getElementById('pBilling').innerText =
+    document.getElementById('billing').value;
+
+  document.getElementById('pTerms').innerText =
+    document.getElementById('terms').value;
+
+  document.getElementById('pDetails').innerText =
+    `Invoice ID: ${document.getElementById('invoiceId').value}
+Date: ${document.getElementById('invoiceDate').value}`;
+
+  /* --------- Products --------- */
+  const tbody = document.querySelector('#productTable tbody');
+  tbody.innerHTML = '';
+
+  let subTotal = 0;
+
+  const lines = document
+    .getElementById('products')
+    .value
+    .split(/\r?\n/);   // ✅ FIXED NEWLINE
+
+  lines.forEach((line, index) => {
+    if (!line.trim()) return;
+
+    const parts = line.split('|');
+    if (parts.length !== 3) return;
+
+    const desc = parts[0].trim();
+    const qty = Number(parts[1].trim());
+    const price = Number(parts[2].trim());
+    const total = qty * price;
+
+    subTotal += total;
+
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${index + 1}</td>
+      <td>${desc}</td>
+      <td>${qty}</td>
+      <td>₹${price.toLocaleString()}</td>
+      <td>₹${total.toLocaleString()}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+
+  const shipping = Number(document.getElementById('shipping').value || 0);
+
+  document.getElementById('subTotal').innerText =
+    `₹${subTotal.toLocaleString()}`;
+
+  document.getElementById('pShipping').innerText =
+    `₹${shipping.toLocaleString()}`;
+
+  document.getElementById('grandTotal').innerText =
+    `₹${(subTotal + shipping).toLocaleString()}`;
+
+  /* --------- Generate SINGLE PAGE A4 PDF --------- */
+  const element = document.getElementById('invoice');
+
+  html2canvas(element, {
+    scale: 2,
+    useCORS: true,
+    backgroundColor: '#ffffff'
+  }).then(canvas => {
+
+    const imgData = canvas.toDataURL('image/png');
+
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF('p', 'mm', 'a4');
+
+    const pageWidth = 210;
+    const pageHeight = 297;
+
+    // Force exact A4 fit
+    pdf.addImage(
+      imgData,
+      'PNG',
+      0,
+      0,
+      pageWidth,
+      pageHeight
+    );
+
+    pdf.save('invoice.pdf');
+  });
+}
+generatePDF()
+</script>
+
+</body>
+</html>
