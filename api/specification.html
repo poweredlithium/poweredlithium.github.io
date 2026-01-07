@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Battery Specification PDF Generator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- html2canvas + jsPDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 20px;
+    }
+
+    /* ---------- FORM ---------- */
+    .form-panel {
+      background: #ffffff;
+      padding: 16px;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      max-height: calc(100vh - 40px);
+      overflow-y: auto;
+    }
+
+    .form-panel label {
+      font-size: 13px;
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
+
+    .form-panel input,
+    .form-panel textarea,
+    .form-panel input[type="file"] {
+      width: 100%;
+      padding: 6px 8px;
+      margin-top: 4px;
+      font-size: 13px;
+      box-sizing: border-box;
+    }
+
+    .form-panel input[type="file"] {
+      padding: 4px;
+      cursor: pointer;
+    }
+
+    .form-panel textarea {
+      resize: vertical;
+      min-height: 60px;
+    }
+
+    .form-panel button {
+      margin-top: 14px;
+      width: 100%;
+      padding: 10px;
+      background: #1e88e5;
+      color: #fff;
+      border: none;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .form-panel button:hover {
+      background: #1565c0;
+    }
+
+    /* ---------- SPECIFICATION PREVIEW ---------- */
+    .preview-wrapper {
+      background: #ccc;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* A4 size */
+    .specification {
+      width: 210mm;
+      min-height: 297mm;
+      background: white;
+      padding: 20mm;
+      box-sizing: border-box;
+      color: #000;
+      overflow: hidden;
+    }
+
+    /* Header */
+    .spec-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 30px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #1e88e5;
+    }
+
+    .company-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-circle {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #4fc3f7 0%, #29b6f6 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    .logo-circle.has-image {
+      background: transparent;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .logo-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 0;
+    }
+
+    .logo-circle .logo-text {
+      font-size: 10px;
+      margin-top: 2px;
+    }
+
+    .company-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .company-name {
+      font-size: 20px;
+      font-weight: bold;
+      color: #1565c0;
+      margin-bottom: 4px;
+    }
+
+    .company-tagline {
+      font-size: 12px;
+      color: #666;
+    }
+
+    /* Title */
+    .spec-title {
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      margin: 30px 0;
+    }
+
+    /* Battery Visual and Features */
+    .battery-section {
+      display: flex;
+      gap: 30px;
+      margin-bottom: 30px;
+      align-items: flex-start;
+    }
+
+    .battery-visual {
+      width: 120px;
+      min-height: 120px;
+      background: transparent;
+      border-radius: 0;
+      position: relative;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: visible;
+    }
+
+    .battery-visual.has-image {
+      background: transparent;
+    }
+
+    .battery-visual:not(.has-image) {
+      background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
+      border-radius: 8px;
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .battery-visual img {
+      max-width: 120px;
+      max-height: 200px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 0;
+      display: block;
+    }
+
+    .battery-top {
+      width: 100%;
+      height: 20px;
+      background: #0d47a1;
+      border-radius: 8px 8px 0 0;
+      position: relative;
+    }
+
+    .battery-terminals {
+      position: absolute;
+      top: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+    }
+
+    .terminal {
+      width: 12px;
+      height: 10px;
+      background: #64b5f6;
+      border-radius: 2px;
+    }
+
+    .features-list {
+      flex: 1;
+    }
+
+    .features-list h4 {
+      font-size: 16px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 12px;
+    }
+
+    .features-list ol {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .features-list li {
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    /* Specification Table */
+    .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      font-size: 13px;
+    }
+
+    .spec-table th {
+      background: #e3f2fd;
+      color: #1565c0;
+      font-weight: bold;
+      padding: 10px 8px;
+      text-align: left;
+      border: 1px solid #90caf9;
+    }
+
+    .spec-table td {
+      padding: 8px;
+      border: 1px solid #e0e0e0;
+      color: #333;
+    }
+
+    .spec-table tr:nth-child(even) {
+      background: #f5f5f5;
+    }
+
+    .spec-table tr:nth-child(odd) {
+      background: #ffffff;
+    }
+
+    .spec-number {
+      text-align: center;
+      font-weight: bold;
+      width: 40px;
+    }
+
+    .spec-item {
+      font-weight: 500;
+      width: 200px;
+    }
+
+    .spec-parameter {
+      width: auto;
+    }
+
+    /* Footer */
+    .spec-footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #e0e0e0;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 11px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-logo-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #4fc3f7 0%, #29b6f6 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 12px;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .footer-logo-circle.has-image {
+      background: transparent;
+      border-radius: 0;
+    }
+
+    .footer-logo-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 0;
+    }
+
+    .footer-logo-circle .logo-text {
+      font-size: 7px;
+      margin-top: 1px;
+    }
+
+    .footer-company {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .footer-company-name {
+      font-weight: bold;
+      color: #1565c0;
+      font-size: 12px;
+    }
+
+    .footer-contact-info {
+      margin-top: 4px;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .footer-contact-info div {
+      margin-top: 2px;
+    }
+
+    @media print {
+      .form-panel {
+        display: none;
+      }
+      .preview-wrapper {
+        background: white;
+        padding: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- ================= FORM PANEL ================= -->
+  <div class="form-panel">
+    <h2>Battery Specification Inputs</h2>
+
+    <label>Company Logo URL (or use default)</label>
+    <input type="text" id="logoUrl" placeholder="https://example.com/logo.png" value="https://poweredlithium.github.io/logo.png" />
+
+    <label>Company Name</label>
+    <input type="text" id="companyName" value="Powered Lithium" />
+
+    <label>Company Tagline</label>
+    <input type="text" id="companyTagline" value="Best store for lithium batteries" />
+
+    <label>Battery Voltage (V)</label>
+    <input type="text" id="voltage" value="3.2" />
+
+    <label>Battery Capacity (Ah)</label>
+    <input type="text" id="capacity" value="230" />
+
+    <label>Battery Image (Upload from local system)</label>
+    <input type="file" id="batteryImage" accept="image/*" />
+
+    <label>Features (one per line)</label>
+    <textarea id="features">Widely used in Energy Storage System, EV, UPS and so on.
+Excellent performance
+High stability
+Long life time</textarea>
+
+    <label>Specifications (Format: Item|Parameter, one per line)</label>
+    <textarea id="specifications">Min Capacity|230Ah
+Min Energy|736Wh
+Nominal Voltage|3.2V
+Internal Resistance|≤0.5mΩ
+Charging Cut-off Voltage|3.65V
+Discharging Cut-off Voltage|2.5V (T>0°C), 2.0V (T≤0°C)
+Standard Charging Current|115A (0.5C)
+Standard Discharging Current|230A (1C)
+Charging Temperature|0~65°C
+Discharging Temperature|-35~65°C
+Storage Temperature|3 months: 0~45°C, 1 month: -20~45°C
+Cycling Performance|4000 Cycles
+Weight|4140±124g</textarea>
+
+    <label>Company Address</label>
+    <textarea id="companyAddress">No 1/2 MC Road, Vinayagapuram, Agaramcherry, Gudiyattam, Vellore, Tamil Nadu, India - 635804</textarea>
+
+    <label>Phone</label>
+    <input type="text" id="phone" value="+91 8838697129" />
+
+    <label>Email</label>
+    <input type="text" id="email" value="Poweredlithium@gmail.com" />
+
+    <label>Website</label>
+    <input type="text" id="website" value="www.poweredlithium.com" />
+
+    <button onclick="generatePDF()">Generate PDF (A4)</button>
+  </div>
+
+  <!-- ================= PREVIEW ================= -->
+  <div class="preview-wrapper">
+    <div class="specification" id="specification">
+
+      <!-- Header -->
+      <div class="spec-header">
+        <div class="company-brand">
+          <div class="logo-circle" id="headerLogo">
+            <div>PL</div>
+            <div class="logo-text">lithium</div>
+          </div>
+          <div class="company-info">
+            <div class="company-name" id="pCompanyName">Powered Lithium</div>
+            <div class="company-tagline" id="pCompanyTagline">Best store for lithium batteries</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Title -->
+      <div class="spec-title" id="pSpecTitle">
+        Specification of 3.2V 230Ah LiFePO4 Battery
+      </div>
+
+      <!-- Battery Visual and Features -->
+      <div class="battery-section">
+        <div class="battery-visual" id="batteryVisual">
+          <div class="battery-top">
+            <div class="battery-terminals">
+              <div class="terminal"></div>
+              <div class="terminal"></div>
+            </div>
+          </div>
+        </div>
+        <div class="features-list">
+          <h4>Features:</h4>
+          <ol id="pFeatures"></ol>
+        </div>
+      </div>
+
+      <!-- Specification Table -->
+      <table class="spec-table" id="specTable">
+        <thead>
+          <tr>
+            <th class="spec-number">No</th>
+            <th class="spec-item">Item</th>
+            <th class="spec-parameter">Parameter Specification</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+      <!-- Footer -->
+      <div class="spec-footer">
+        <div class="footer-logo">
+          <div class="footer-logo-circle" id="footerLogo">
+            <div>PL</div>
+            <div class="logo-text">lithium</div>
+          </div>
+          <div class="footer-company">
+            <div class="footer-company-name" id="pFooterCompanyName">Powered Lithium</div>
+            <div class="footer-contact-info">
+              <div id="pFooterAddress"></div>
+              <div><strong>Tel:</strong> <span id="pPhone"></span></div>
+              <div><strong>Email:</strong> <span id="pEmail"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+function generatePDF() {
+
+  /* --------- Populate Preview --------- */
+  // Update logo from URL - wait for image to load before generating PDF
+  const logoUrl = document.getElementById('logoUrl').value.trim();
+  const headerLogo = document.getElementById('headerLogo');
+  const footerLogo = document.getElementById('footerLogo');
+  
+  function updateLogoForPDF() {
+    if (logoUrl) {
+      const img = document.createElement('img');
+      img.src = logoUrl;
+      img.alt = 'Company Logo';
+      img.onerror = function() {
+        headerLogo.innerHTML = '<div>PL</div><div class="logo-text">lithium</div>';
+        footerLogo.innerHTML = '<div>PL</div><div class="logo-text">lithium</div>';
+        headerLogo.classList.remove('has-image');
+        footerLogo.classList.remove('has-image');
+        proceedWithPDF();
+      };
+      img.onload = function() {
+        headerLogo.innerHTML = '';
+        headerLogo.appendChild(img.cloneNode(true));
+        footerLogo.innerHTML = '';
+        footerLogo.appendChild(img.cloneNode(true));
+        headerLogo.classList.add('has-image');
+        footerLogo.classList.add('has-image');
+        proceedWithPDF();
+      };
+    } else {
+      headerLogo.innerHTML = '<div>PL</div><div class="logo-text">lithium</div>';
+      footerLogo.innerHTML = '<div>PL</div><div class="logo-text">lithium</div>';
+      headerLogo.classList.remove('has-image');
+      footerLogo.classList.remove('has-image');
+      proceedWithPDF();
+    }
+  }
+  
+  function proceedWithPDF() {
+
+  document.getElementById('pCompanyName').innerText =
+    document.getElementById('companyName').value;
+
+  document.getElementById('pCompanyTagline').innerText =
+    document.getElementById('companyTagline').value;
+
+  document.getElementById('pFooterCompanyName').innerText =
+    document.getElementById('companyName').value;
+
+  const voltage = document.getElementById('voltage').value;
+  const capacity = document.getElementById('capacity').value;
+  document.getElementById('pSpecTitle').innerText =
+    `Specification of ${voltage}V ${capacity}Ah LiFePO4 Battery`;
+
+  /* --------- Features --------- */
+  const featuresList = document.getElementById('pFeatures');
+  featuresList.innerHTML = '';
+  const features = document.getElementById('features').value.split(/\r?\n/);
+  features.forEach(feature => {
+    if (feature.trim()) {
+      const li = document.createElement('li');
+      li.textContent = feature.trim();
+      featuresList.appendChild(li);
+    }
+  });
+
+  /* --------- Specifications Table --------- */
+  const tbody = document.querySelector('#specTable tbody');
+  tbody.innerHTML = '';
+
+  const specs = document.getElementById('specifications').value.split(/\r?\n/);
+  specs.forEach((spec, index) => {
+    if (!spec.trim()) return;
+
+    const parts = spec.split('|');
+    if (parts.length !== 2) return;
+
+    const item = parts[0].trim();
+    const parameter = parts[1].trim();
+
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td class="spec-number">${index + 1}</td>
+      <td class="spec-item">${item}</td>
+      <td class="spec-parameter">${parameter}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+
+  /* --------- Footer Contact --------- */
+  document.getElementById('pFooterAddress').innerText =
+    document.getElementById('companyAddress').value;
+
+  document.getElementById('pPhone').innerText =
+    document.getElementById('phone').value;
+
+  document.getElementById('pEmail').innerText =
+    document.getElementById('email').value;
+
+    /* --------- Generate SINGLE PAGE A4 PDF --------- */
+    const element = document.getElementById('specification');
+
+  html2canvas(element, {
+    scale: 2,
+    useCORS: true,
+    backgroundColor: '#ffffff',
+    logging: false
+  }).then(canvas => {
+
+    const imgData = canvas.toDataURL('image/png');
+
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF('p', 'mm', 'a4');
+
+    const pageWidth = 210;
+    const pageHeight = 297;
+
+    // Calculate height to fit content
+    const imgHeight = (canvas.height * pageWidth) / canvas.width;
+    const height = Math.min(imgHeight, pageHeight);
+
+    pdf.addImage(
+      imgData,
+      'PNG',
+      0,
+      0,
+      pageWidth,
+      height
+    );
+
+    // If content is taller than one page, add additional pages
+    if (imgHeight > pageHeight) {
+      let position = -pageHeight;
+      while (position > -imgHeight) {
+        pdf.addPage();
+        pdf.addImage(
+          imgData,
+          'PNG',
+          0,
+          position,
+          pageWidth,
+          height
+        );
+        position -= pageHeight;
+      }
+    }
+
+    const filename = `Battery_Spec_${voltage}V_${capacity}Ah.pdf`;
+    pdf.save(filename);
+    }).catch(error => {
+      console.error('Error generating PDF:', error);
+      alert('Error generating PDF. Please check the console for details.');
+    });
+  }
+  
+  // Start the process
+  updateLogoForPDF();
+}
+
+// Handle battery image upload and logo URL
+document.addEventListener('DOMContentLoaded', function() {
+  const batteryImageInput = document.getElementById('batteryImage');
+  const batteryVisual = document.getElementById('batteryVisual');
+  const logoUrlInput = document.getElementById('logoUrl');
+  const headerLogo = document.getElementById('headerLogo');
+  const footerLogo = document.getElementById('footerLogo');
+  
+  // Update logo when URL changes
+  function updateLogo() {
+    const logoUrl = logoUrlInput.value.trim();
+    if (logoUrl) {
+      const img = document.createElement('img');
+      img.src = logoUrl;
+      img.alt = 'Company Logo';
+      img.onerror = function() {
+        // Fallback to default if image fails to load
+        headerLogo.innerHTML = '<div>PL</div><div class="logo-text">lithium</div>';
+        footerLogo.innerHTML = '<div>PL</div><div class="logo-text">lithium</div>';
+        headerLogo.classList.remove('has-image');
+        footerLogo.classList.remove('has-image');
+      };
+      img.onload = function() {
+        headerLogo.innerHTML = '';
+        headerLogo.appendChild(img.cloneNode(true));
+        footerLogo.innerHTML = '';
+        footerLogo.appendChild(img.cloneNode(true));
+        headerLogo.classList.add('has-image');
+        footerLogo.classList.add('has-image');
+      };
+    } else {
+      headerLogo.innerHTML = '<div>PL</div><div class="logo-text">lithium</div>';
+      footerLogo.innerHTML = '<div>PL</div><div class="logo-text">lithium</div>';
+      headerLogo.classList.remove('has-image');
+      footerLogo.classList.remove('has-image');
+    }
+  }
+  
+  logoUrlInput.addEventListener('input', updateLogo);
+  logoUrlInput.addEventListener('change', updateLogo);
+  
+  // Initial logo load
+  updateLogo();
+  
+  batteryImageInput.addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        // Clear existing content
+        batteryVisual.innerHTML = '';
+        // Create and add image
+        const img = document.createElement('img');
+        img.src = event.target.result;
+        img.alt = 'Battery Image';
+        batteryVisual.appendChild(img);
+        batteryVisual.classList.add('has-image');
+      };
+      reader.readAsDataURL(file);
+    } else {
+      // Reset to default visual if no file selected
+      batteryVisual.innerHTML = `
+        <div class="battery-top">
+          <div class="battery-terminals">
+            <div class="terminal"></div>
+            <div class="terminal"></div>
+          </div>
+        </div>
+      `;
+      batteryVisual.classList.remove('has-image');
+    }
+  });
+
+  const inputs = document.querySelectorAll('.form-panel input:not([type="file"]), .form-panel textarea');
+  inputs.forEach(input => {
+    input.addEventListener('input', function() {
+      // Update preview in real-time (optional - can be removed if not needed)
+      // generatePDF(); // Uncomment to enable real-time preview
+    });
+  });
+});
+</script>
+
+</body>
+</html>
+
