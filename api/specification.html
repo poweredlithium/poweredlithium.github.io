@@ -416,6 +416,9 @@
     <label>Battery Capacity (Ah)</label>
     <input type="text" id="capacity" value="230" />
 
+    <label>Specification Title (Full Title)</label>
+    <input type="text" id="specTitle" value="Specification of 3.2V 230Ah LiFePO4 Battery" />
+
     <label>Battery Image (Upload from local system)</label>
     <input type="file" id="batteryImage" accept="image/*" />
 
@@ -578,10 +581,8 @@ function generatePDF() {
   document.getElementById('pFooterCompanyName').innerText =
     document.getElementById('companyName').value;
 
-  const voltage = document.getElementById('voltage').value;
-  const capacity = document.getElementById('capacity').value;
   document.getElementById('pSpecTitle').innerText =
-    `Specification of ${voltage}V ${capacity}Ah LiFePO4 Battery`;
+    document.getElementById('specTitle').value;
 
   /* --------- Features --------- */
   const featuresList = document.getElementById('pFeatures');
@@ -676,7 +677,12 @@ function generatePDF() {
       }
     }
 
-    const filename = `Battery_Spec_${voltage}V_${capacity}Ah.pdf`;
+    const voltage = document.getElementById('voltage').value;
+    const capacity = document.getElementById('capacity').value;
+    const specTitle = document.getElementById('specTitle').value;
+    // Use title for filename, sanitize it for file system
+    const filenameTitle = specTitle.replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '_').substring(0, 50);
+    const filename = `Battery_Spec_${filenameTitle || `${voltage}V_${capacity}Ah`}.pdf`;
     pdf.save(filename);
     }).catch(error => {
       console.error('Error generating PDF:', error);
@@ -761,7 +767,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  const inputs = document.querySelectorAll('.form-panel input:not([type="file"]), .form-panel textarea');
+  // Update title in real-time
+  const specTitleInput = document.getElementById('specTitle');
+  specTitleInput.addEventListener('input', function() {
+    document.getElementById('pSpecTitle').innerText = this.value || 'Specification of 3.2V 230Ah LiFePO4 Battery';
+  });
+  
+  // Initialize title on page load
+  document.getElementById('pSpecTitle').innerText = specTitleInput.value;
+
+  const inputs = document.querySelectorAll('.form-panel input:not([type="file"]):not(#specTitle), .form-panel textarea');
   inputs.forEach(input => {
     input.addEventListener('input', function() {
       // Update preview in real-time (optional - can be removed if not needed)
